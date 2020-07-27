@@ -17,9 +17,9 @@ int main(){
     /* 
         What's inside Trie? : )
 
-        trie[v] -- we are int tries node v
+        trie[v] -- we are in tries node v
 
-        we store map just for saving edges of over trie
+        we store map just for saving edges of our trie
 
         if (trie[current_node][next_char] != 0) we have edge and
         destination of this edge is trie[current_node][next_char]
