@@ -1,57 +1,39 @@
-#include <iostream>
-#include <vector>
+/**
+* Gleb Zavyalov (zavygy@gmail.com)
+*/
+
+#include <bits/stdc++.h>
 
 using namespace std;
 
-string reverse(string s){
-	string res = "";
-	for(int i = s.size()-1; i >=0; i--){
-		res+=s[i];
-	}
-	return res;
-}
-
+#define forn(i, n) for (int i = 0; i < (int)(n); i++)
+#define all(a) (a).begin(), (a).end()
+const int MX_SIZE = 1e5;
 struct Hasher {
-	int n;
-	vector<int> h, deg;
-	const int x = 239017, M = 1e9 + 7;
+    const int P = 239017;
+    string s;
+    int n;
+    int64_t deg[MX_SIZE], h[MX_SIZE];
+    Hasher(string inp) : s(inp), n(inp.size()) {
+        forn (i, n) {
+            h[i + 1] = h[i] * P + s[i];
+            deg[i + 1] = deg[i] * P;
+        }
+    }
 
-	Hasher (const string &s): n(s.size()), h(n+1, 0), deg(n+1, 1) {
-		for(int i = 0; i < n; i++){
-			h[i + 1] = ((int64_t)h[i] * x + s[i]) % M;
-			deg[i + 1] = ((int64_t)deg[i] * x) % M;
-		}
-	}
-
-	int getHash (int i, int len) {
-		return ((h[i + len] - ((int64_t) h[i] * deg[len])) % M + M) % M;
-	};
-
-	int getHashLR (int l, int r) {
-		return ((h[r] - ((int64_t) h[l] * deg[r - l])) % M + M) % M;
-	};
-
-	int getAllHash() {
-		return ((h[0 + n] - ((int64_t) h[0] * deg[n])) % M + M) % M;
-	}
-
+    int64_t get(int l, int r) {
+        return h[r + 1] - h[l] * deg[r - l + 1];
+    }
 };
 
 int main(){
-
-	string s;
-	cin >> s;
-	Hasher h1(s);
-	Hasher h2(reverse(s));
+    ios_base::sync_with_stdio(0), cin.tie(0);
 
 
-	if (h)
-
-	int l = 0;
-	cin >> l;
-	int len = 0; 
-	cin >> len;
-	cout << h1.getHash (l, len) << ' '  << '\n';
-
-	return 0;
 }
+
+/* stuff you should look for
+   * int overflow, array bounds
+   * special cases (n=1?), set tle
+   * do smth instead of nothing and stay organized
+*/
