@@ -9,11 +9,11 @@ using namespace std;
 #define forn(i, n) for (int i = 0; i < (int)(n); i++)
 #define all(a) (a).begin(), (a).end()
 
-struct MaxFlow {
+struct MaxFlow { // Ford-Fulkerson
     struct Edge {
         int to, flow, capacity, rev;
     };
-    
+
     vector<vector<Edge>> g;
     vector<int> u;
     int s, t, cc;

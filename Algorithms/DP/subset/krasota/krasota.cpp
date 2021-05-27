@@ -10,12 +10,12 @@ using namespace std;
 #define all(a) (a).begin(), (a).end()
 
 int main(){
-   ios_base::sync_with_stdio(0), cin.tie(0);
-   int n; cin >> n;
-   int b[n][n];
-   forn (i, n)
-      forn (j, n)
-         cin >> b[i][j];
+    ios_base::sync_with_stdio(0), cin.tie(0);
+    int n; cin >> n;
+    int b[n][n];
+    forn (i, n)
+        forn (j, n)
+            cin >> b[i][j];
 
    map<int, vector<int>> m;
    int k; cin >> k;
